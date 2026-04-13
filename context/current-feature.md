@@ -1,19 +1,19 @@
 # Current Feature
 
-Dashboard Items — see @context/features/07-dashboard-items-spec.md
+Stats & Sidebar — see @context/features/08-stats-sidebar-spec.md
 
 ## Status
 
-Complete
+In Progress
 
 ## Goals and requirements
 
-- Replace mock item data (pinned + recent) with real data from Neon database via Prisma
-- Create `src/lib/db/items.ts` with data fetching functions
-- Fetch items directly in server component
-- Item card left border colour derived from the item type colour
-- Hide pinned section entirely if there are no pinned items
-- Keep the current design
+- Display stats from DB data, keeping current design/layout
+- Favourites and Recents shown under a "Collections" heading in the sidebar
+- Add "View all collections" link under the collections list → /collections
+- Keep star icons for favourite collections; for recents, show a coloured rounded square based on the most-used item type in that collection
+- Show system item types in the sidebar from DB
+- Add database functions to `src/lib/db/items.ts` (use `src/lib/db/collections.ts` as reference)
 
 ## Notes
 

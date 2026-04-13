@@ -84,6 +84,33 @@ export async function getRecentItems(limit = 10): Promise<ItemCardData[]> {
   return items.map(toCardData)
 }
 
+export type SidebarItemType = {
+  id: string
+  name: string
+  icon: string
+  color: string
+  count: number
+}
+
+// Fetches all system item types with per-type item counts for the sidebar.
+// Deduplicates by name (seed bug can produce duplicate type records) and sums counts.
+export async function getItemTypesWithCounts(): Promise<SidebarItemType[]> {
+  const types = await prisma.itemType.findMany({
+    where: { isSystem: true },
+    include: { _count: { select: { items: true } } },
+  })
+  const byName = new Map<string, SidebarItemType>()
+  for (const t of types) {
+    const existing = byName.get(t.name)
+    if (existing) {
+      existing.count += t._count.items
+    } else {
+      byName.set(t.name, { id: t.id, name: t.name, icon: t.icon, color: t.color, count: t._count.items })
+    }
+  }
+  return [...byName.values()]
+}
+
 // Fetches aggregate counts for the stats cards
 export async function getDashboardStats(): Promise<DashboardStats> {
   const [itemCount, collectionCount, favoriteItemCount, favoriteCollectionCount] =
