@@ -1,11 +1,12 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { items, collections, itemTypes } from "@/data/mock-data";
+import { items, collections as mockCollections, itemTypes } from "@/data/mock-data";
 import { StatsCards, buildStats } from "@/components/dashboard/StatsCards";
 import { CollectionCard } from "@/components/dashboard/CollectionCard";
 import { ItemCard } from "@/components/dashboard/ItemCard";
+import { getRecentCollections } from "@/lib/db/collections";
 
-// ── Derived data ──────────────────────────────────────────────────────
+// ── Derived data (mock — items not yet migrated to DB) ────────────────
 const recentItems = [...items]
   .sort((a, b) => b.lastUsedAt.getTime() - a.lastUsedAt.getTime())
   .slice(0, 10);
@@ -14,39 +15,27 @@ const pinnedItems = items.filter((i) => i.isPinned);
 
 const stats = buildStats(
   items.length,
-  collections.length,
+  mockCollections.length,
   items.filter((i) => i.isFavorite).length,
-  collections.filter((c) => c.isFavorite).length,
+  mockCollections.filter((c) => c.isFavorite).length,
 );
 
-function getItemTypeBreakdown(itemIds: string[]) {
-  const counts: Record<string, number> = {};
-  for (const id of itemIds) {
-    const item = items.find((i) => i.id === id);
-    if (item) counts[item.itemTypeId] = (counts[item.itemTypeId] ?? 0) + 1;
-  }
-  return Object.entries(counts).map(([typeId, count]) => ({ typeId, count }));
-}
-
 // ── Page ──────────────────────────────────────────────────────────────
-export default function DashboardPage() {
+export default async function DashboardPage() {
+  const collections = await getRecentCollections(6);
+
   return (
     <div className="flex flex-col gap-8 w-full max-w-[2000px] mx-auto">
 
       {/* Stats */}
       <StatsCards stats={stats} />
 
-      {/* Collections */}
+      {/* Collections — data from DB */}
       <section>
         <SectionHeader title="Collections" href="/collections" />
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {collections.slice(0, 6).map((col) => (
-            <CollectionCard
-              key={col.id}
-              collection={col}
-              itemTypes={itemTypes}
-              itemTypeBreakdown={getItemTypeBreakdown(col.itemIds)}
-            />
+          {collections.map((col) => (
+            <CollectionCard key={col.id} collection={col} />
           ))}
         </div>
       </section>
