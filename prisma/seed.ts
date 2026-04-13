@@ -51,6 +51,12 @@ async function main() {
   })
   console.log(`  ✓ ${user.email}`)
 
+  // ── Clean up existing collections & items for this user ───────────────
+  console.log("\nCleaning up existing data...")
+  await prisma.itemCollection.deleteMany({ where: { item: { userId: user.id } } })
+  await prisma.item.deleteMany({ where: { userId: user.id } })
+  await prisma.collection.deleteMany({ where: { userId: user.id } })
+
   // ── Collections & items ────────────────────────────────
   console.log("\nSeeding collections and items...")
 
@@ -68,6 +74,7 @@ async function main() {
       {
         title: "Custom Hooks",
         contentType: "snippet",
+        isPinned: true,
         language: "typescript",
         content: `import { useState, useEffect, useCallback } from "react"
 
@@ -184,6 +191,7 @@ export function truncate(str: string, max: number) {
       {
         title: "Code Review Prompt",
         contentType: "prompt",
+        isPinned: true,
         content: `Review the following code and provide feedback on:
 1. Correctness — are there any bugs or edge cases?
 2. Readability — is the code clear and well-structured?
@@ -334,6 +342,7 @@ echo "Done."`,
       {
         title: "Git Operations",
         contentType: "command",
+        isPinned: true,
         content: `# Undo last commit (keep changes staged)
 git reset --soft HEAD~1
 

@@ -1,19 +1,19 @@
 # Current Feature
 
-Dashboard Collections — see @context/features/06-dashboard-collections-spec.md
+Dashboard Items — see @context/features/07-dashboard-items-spec.md
 
 ## Status
 
-Complete
+In Progress
 
 ## Goals and requirements
 
-- Replace mock collection data with real data from Neon database via Prisma
-- Create `src/lib/db/collections.ts` with data fetching functions
-- Fetch collections directly in server component
-- Add a vertical colour band on the left edge of each card, derived from the most-used content type in that collection
-- Show small icons of all types in each collection card
-- Keep the current design; do not change anything else
+- Replace mock item data (pinned + recent) with real data from Neon database via Prisma
+- Create `src/lib/db/items.ts` with data fetching functions
+- Fetch items directly in server component
+- Item card left border colour derived from the item type colour
+- Hide pinned section entirely if there are no pinned items
+- Keep the current design
 
 ## Notes
 

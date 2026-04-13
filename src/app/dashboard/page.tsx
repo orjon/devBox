@@ -1,28 +1,25 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { items, collections as mockCollections, itemTypes } from "@/data/mock-data";
 import { StatsCards, buildStats } from "@/components/dashboard/StatsCards";
 import { CollectionCard } from "@/components/dashboard/CollectionCard";
 import { ItemCard } from "@/components/dashboard/ItemCard";
 import { getRecentCollections } from "@/lib/db/collections";
+import { getPinnedItems, getRecentItems, getDashboardStats } from "@/lib/db/items";
 
-// ── Derived data (mock — items not yet migrated to DB) ────────────────
-const recentItems = [...items]
-  .sort((a, b) => b.lastUsedAt.getTime() - a.lastUsedAt.getTime())
-  .slice(0, 10);
-
-const pinnedItems = items.filter((i) => i.isPinned);
-
-const stats = buildStats(
-  items.length,
-  mockCollections.length,
-  items.filter((i) => i.isFavorite).length,
-  mockCollections.filter((c) => c.isFavorite).length,
-);
-
-// ── Page ──────────────────────────────────────────────────────────────
 export default async function DashboardPage() {
-  const collections = await getRecentCollections(6);
+  const [collections, pinnedItems, recentItems, statsData] = await Promise.all([
+    getRecentCollections(6),
+    getPinnedItems(),
+    getRecentItems(10),
+    getDashboardStats(),
+  ]);
+
+  const stats = buildStats(
+    statsData.itemCount,
+    statsData.collectionCount,
+    statsData.favoriteItemCount,
+    statsData.favoriteCollectionCount,
+  );
 
   return (
     <div className="flex flex-col gap-8 w-full max-w-[2000px] mx-auto">
@@ -30,7 +27,7 @@ export default async function DashboardPage() {
       {/* Stats */}
       <StatsCards stats={stats} />
 
-      {/* Collections — data from DB */}
+      {/* Collections */}
       <section>
         <SectionHeader title="Collections" href="/collections" />
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
@@ -40,17 +37,13 @@ export default async function DashboardPage() {
         </div>
       </section>
 
-      {/* Pinned Items */}
+      {/* Pinned Items — hidden if none */}
       {pinnedItems.length > 0 && (
         <section>
           <SectionHeader title="Pinned Items" href="/items?pinned=true" />
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {pinnedItems.map((item) => (
-              <ItemCard
-                key={item.id}
-                item={item}
-                itemType={itemTypes.find((t) => t.id === item.itemTypeId)}
-              />
+              <ItemCard key={item.id} item={item} />
             ))}
           </div>
         </section>
@@ -61,11 +54,7 @@ export default async function DashboardPage() {
         <SectionHeader title="Recent Items" href="/items" />
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {recentItems.map((item) => (
-            <ItemCard
-              key={item.id}
-              item={item}
-              itemType={itemTypes.find((t) => t.id === item.itemTypeId)}
-            />
+            <ItemCard key={item.id} item={item} />
           ))}
         </div>
       </section>
