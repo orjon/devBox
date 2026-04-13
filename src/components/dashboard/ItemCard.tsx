@@ -1,9 +1,21 @@
 import Link from "next/link";
-import { Pin } from "lucide-react";
+import { Pin, Code, Sparkles, Terminal, StickyNote, File, Image, Link as LinkIcon, type LucideIcon } from "lucide-react";
+
+// Maps the icon string stored in ItemType.icon to a Lucide component
+const ICON_MAP: Record<string, LucideIcon> = {
+  Code,
+  Sparkles,
+  Terminal,
+  StickyNote,
+  File,
+  Image,
+  Link: LinkIcon,
+}
 
 interface ItemType {
   id: string;
   name: string;
+  icon: string;
   color: string;
 }
 
@@ -39,24 +51,20 @@ function timeAgo(date: Date): string {
 
 export function ItemCard({ item, itemType }: ItemCardProps) {
   const previewLines = item.content.split("\n").slice(0, 5).join("\n");
+  const Icon = itemType ? (ICON_MAP[itemType.icon] ?? File) : null;
 
   return (
     <Link
       href={`/items/${item.id}`}
       className="flex flex-col gap-2 rounded-lg border border-border bg-card p-4 hover:border-border/80 hover:bg-card/80 transition-colors"
     >
-      {/* Header */}
+      {/* Title + type icon + pin */}
       <div className="flex items-start justify-between gap-2">
-        <div className="flex items-center gap-2 min-w-0">
-          {itemType && (
-            <span
-              className="inline-flex shrink-0 items-center rounded px-1.5 py-0.5 text-xs font-medium"
-              style={{ backgroundColor: `${itemType.color}22`, color: itemType.color }}
-            >
-              {itemType.name}
-            </span>
+        <div className="flex items-center gap-1.5 min-w-0">
+          {Icon && itemType && (
+            <Icon className="h-3.5 w-3.5 shrink-0" style={{ color: itemType.color }} />
           )}
-          <span className="font-medium text-sm text-foreground truncate">{item.title}</span>
+          <span className="font-medium text-sm text-foreground leading-tight truncate">{item.title}</span>
         </div>
         {item.isPinned && <Pin className="h-3.5 w-3.5 shrink-0 text-muted-foreground" />}
       </div>
