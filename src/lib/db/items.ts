@@ -4,11 +4,13 @@ export type ItemCardData = {
   id: string
   title: string
   content: string | null
+  url: string | null
   description: string | null
   language: string | null
   isPinned: boolean
   isFavorite: boolean
   lastUsedAt: Date | null
+  createdAt: Date
   tags: string[]
   itemType: {
     id: string
@@ -36,11 +38,13 @@ function toCardData(item: {
   id: string
   title: string
   content: string | null
+  url: string | null
   description: string | null
   language: string | null
   isPinned: boolean
   isFavorite: boolean
   lastUsedAt: Date | null
+  createdAt: Date
   itemType: { id: string; name: string; icon: string; color: string }
   tags: { tag: { name: string } }[]
 }): ItemCardData {
@@ -48,11 +52,13 @@ function toCardData(item: {
     id: item.id,
     title: item.title,
     content: item.content,
+    url: item.url,
     description: item.description,
     language: item.language,
     isPinned: item.isPinned,
     isFavorite: item.isFavorite,
     lastUsedAt: item.lastUsedAt,
+    createdAt: item.createdAt,
     tags: item.tags.map((t) => t.tag.name),
     itemType: item.itemType,
   }

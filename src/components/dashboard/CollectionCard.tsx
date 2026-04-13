@@ -27,7 +27,8 @@ export function CollectionCard({ collection }: { collection: CollectionCardData 
   return (
     <Link
       href={`/collections/${collection.id}`}
-      className="flex overflow-hidden rounded-lg border border-border bg-card hover:border-border/80 hover:bg-card/80 transition-colors"
+      className="flex overflow-hidden rounded-lg border bg-card hover:bg-card/80 transition-colors"
+      style={{ borderColor: collection.dominantColor }}
     >
       {/* Vertical colour band — color derived from the dominant item type */}
       <div className="w-2 shrink-0" style={{ backgroundColor: collection.dominantColor }} />

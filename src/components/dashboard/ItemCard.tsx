@@ -52,12 +52,14 @@ export function ItemCard({ item }: { item: ItemCardData }) {
           <p className="text-xs text-muted-foreground line-clamp-2">{item.description}</p>
         )}
 
-        {/* Content preview */}
-        {previewLines && (
+        {/* URL (link items) or content preview */}
+        {item.url ? (
+          <p className="text-xs text-blue-400 truncate">{item.url}</p>
+        ) : previewLines ? (
           <div className="rounded bg-muted px-3 py-2 font-mono text-xs text-muted-foreground overflow-hidden">
             <pre className="line-clamp-4 whitespace-pre-wrap break-all">{previewLines}</pre>
           </div>
-        )}
+        ) : null}
 
         {/* Footer */}
         <div className="flex items-center justify-between mt-auto pt-1">
@@ -71,9 +73,7 @@ export function ItemCard({ item }: { item: ItemCardData }) {
               </span>
             ))}
           </div>
-          {item.lastUsedAt && (
-            <span className="text-xs text-muted-foreground shrink-0">{timeAgo(item.lastUsedAt)}</span>
-          )}
+          <span className="text-xs text-muted-foreground shrink-0">{timeAgo(item.createdAt)}</span>
         </div>
     </Link>
   );
