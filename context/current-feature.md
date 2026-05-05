@@ -1,13 +1,21 @@
 # Current Feature
 
+Dashboard Update Borders — see @context/features/09-dashboard-update-borders.md
+
 ## Status
 
-Not Started
+In Progress
 
 ## Goals and requirements
 
+- Item cards (Pinned and Recent) should have a coloured left-side border only — top, right, and bottom borders revert to the default grey (matching the stats cards at the top of the dashboard)
+- Collection cards keep their current styling: coloured left band plus coloured border on all sides
+- No functional changes — styling only
 
 ## Notes
+
+- The coloured left band on item cards should match the current `itemType.color` already used
+- Use the stats cards at the top of the dashboard as the reference for the grey border style
 
 
 ## History

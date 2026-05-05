@@ -12,10 +12,12 @@ export function ItemCard({ item }: { item: ItemCardData }) {
   return (
     <Link
       href={`/items/${item.id}`}
-      className="flex flex-col gap-2 rounded-lg border bg-card p-4 hover:bg-card/80 transition-colors"
-      style={{ borderColor: itemType.color }}
+      className="flex overflow-hidden rounded-lg border bg-card hover:bg-card/80 transition-colors"
     >
-      {/* Title + type icon + pin */}
+      <div className="w-2 shrink-0" style={{ backgroundColor: itemType.color }} />
+
+      <div className="flex flex-col gap-2 p-4 flex-1 min-w-0">
+        {/* Title + type icon + pin */}
         <div className="flex items-start justify-between gap-2">
           <div className="flex items-center gap-1.5 min-w-0">
             <Icon className="h-3.5 w-3.5 shrink-0" style={{ color: itemType.color }} />
@@ -55,6 +57,7 @@ export function ItemCard({ item }: { item: ItemCardData }) {
           </div>
           <span className="text-xs text-muted-foreground shrink-0">{timeAgo(item.createdAt)}</span>
         </div>
+      </div>
     </Link>
   );
 }
