@@ -1,27 +1,7 @@
 import Link from "next/link";
-import {
-  Star,
-  Code,
-  Sparkles,
-  Terminal,
-  StickyNote,
-  File,
-  Image,
-  Link as LinkIcon,
-  type LucideIcon,
-} from "lucide-react";
+import { Star } from "lucide-react";
 import type { CollectionCardData } from "@/lib/db/collections";
-
-// Maps the icon string stored in ItemType.icon to a Lucide component
-const ICON_MAP: Record<string, LucideIcon> = {
-  Code,
-  Sparkles,
-  Terminal,
-  StickyNote,
-  File,
-  Image,
-  Link: LinkIcon,
-}
+import { ICON_MAP } from "@/lib/icon-map";
 
 export function CollectionCard({ collection }: { collection: CollectionCardData }) {
   return (

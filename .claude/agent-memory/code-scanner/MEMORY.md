@@ -1,0 +1,1 @@
+- [DevBox Project Architecture](project_devbox.md) — Architecture patterns, recurring issues, and audit baseline for the DevBox codebase

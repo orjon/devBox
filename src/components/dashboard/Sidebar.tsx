@@ -5,13 +5,7 @@ import Link from "next/link";
 import {
   LayoutGrid,
   LayoutDashboard,
-  Code,
-  Sparkles,
-  Terminal,
-  StickyNote,
   File,
-  Image,
-  Link2,
   Star,
   Settings,
   User,
@@ -24,18 +18,7 @@ import { cn } from "@/lib/utils";
 import { currentUser } from "@/data/mock-data";
 import type { SidebarItemType } from "@/lib/db/items";
 import type { SidebarCollection } from "@/lib/db/collections";
-
-type IconComponent = React.ComponentType<{ className?: string; style?: React.CSSProperties }>;
-
-const ICON_MAP: Record<string, IconComponent> = {
-  Code,
-  Sparkles,
-  Terminal,
-  StickyNote,
-  File,
-  Image,
-  Link: Link2,
-};
+import { ICON_MAP } from "@/lib/icon-map";
 
 export type SidebarData = {
   itemTypes: SidebarItemType[]

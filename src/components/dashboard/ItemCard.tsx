@@ -1,28 +1,8 @@
 import Link from "next/link";
-import { Pin, Code, Sparkles, Terminal, StickyNote, File, Image, Link as LinkIcon, type LucideIcon } from "lucide-react";
+import { Pin, File } from "lucide-react";
 import type { ItemCardData } from "@/lib/db/items";
-
-// Maps the icon string stored in ItemType.icon to a Lucide component
-const ICON_MAP: Record<string, LucideIcon> = {
-  Code,
-  Sparkles,
-  Terminal,
-  StickyNote,
-  File,
-  Image,
-  Link: LinkIcon,
-}
-
-function timeAgo(date: Date): string {
-  const seconds = Math.floor((Date.now() - date.getTime()) / 1000);
-  if (seconds < 60) return "just now";
-  const minutes = Math.floor(seconds / 60);
-  if (minutes < 60) return `${minutes}m ago`;
-  const hours = Math.floor(minutes / 60);
-  if (hours < 24) return `${hours}h ago`;
-  const days = Math.floor(hours / 24);
-  return `${days}d ago`;
-}
+import { ICON_MAP } from "@/lib/icon-map";
+import { timeAgo } from "@/lib/utils";
 
 export function ItemCard({ item }: { item: ItemCardData }) {
   const { itemType } = item;

@@ -1,6 +1,6 @@
 # Current Feature
 
-Stats & Sidebar — see @context/features/08-stats-sidebar-spec.md
+Code Quality Quick Wins
 
 ## Status
 
@@ -8,14 +8,14 @@ In Progress
 
 ## Goals and requirements
 
-- Display stats from DB data, keeping current design/layout
-- Favourites and Recents shown under a "Collections" heading in the sidebar
-- Add "View all collections" link under the collections list → /collections
-- Keep star icons for favourite collections; for recents, show a coloured rounded square based on the most-used item type in that collection
-- Show system item types in the sidebar from DB
-- Add database functions to `src/lib/db/items.ts` (use `src/lib/db/collections.ts` as reference)
+- Extract `ICON_MAP` from `CollectionCard.tsx`, `ItemCard.tsx`, and `Sidebar.tsx` into a shared `src/lib/icon-map.ts` and import it in all three
+- Move the `timeAgo` function from `ItemCard.tsx` into `src/lib/utils.ts` and import it
 
 ## Notes
+
+- No logic changes — pure extractions
+- `ICON_MAP` type is `Record<string, LucideIcon>` from lucide-react
+- `timeAgo` is a pure function with no dependencies, safe to move
 
 
 ## History
@@ -30,3 +30,4 @@ In Progress
 - 2026-04-08: Seed data completed — user (john@mail.com), 7 system item types, 5 collections with 16 items total (snippets, prompts, commands, links)
 - 2026-04-13: Dashboard collections completed — collections section fetches from Neon DB via Prisma, left colour band derived from dominant item type (neutral on tie), lucide icons per type with counts, fixed Prisma 7 client import path
 - 2026-04-13: Dashboard items completed — pinned and recent items from DB, type-coloured border, pin icon states, link URL display, createdAt timestamp, coloured border on collection cards
+- 2026-05-05: Stats & Sidebar completed — stats from DB, favourites/recents under Collections heading, "View all collections" link, coloured rounded square for recents, system item types from DB
