@@ -1,7 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "WebFetch(domain:docs.prisma.io)"
+      "WebFetch(domain:docs.prisma.io)",
+      "Bash(cat)",
+      "Bash(bash /tmp/check_imports.sh)"
     ]
   }
 }
