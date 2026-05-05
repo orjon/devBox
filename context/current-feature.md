@@ -1,26 +1,18 @@
 # Current Feature
 
-Code Quality Quick Wins
-
 ## Status
 
-In Progress
+Not Started
 
 ## Goals and requirements
 
-- Extract `ICON_MAP` from `CollectionCard.tsx`, `ItemCard.tsx`, and `Sidebar.tsx` into a shared `src/lib/icon-map.ts` and import it in all three
-- Move the `timeAgo` function from `ItemCard.tsx` into `src/lib/utils.ts` and import it
 
 ## Notes
-
-- No logic changes — pure extractions
-- `ICON_MAP` type is `Record<string, LucideIcon>` from lucide-react
-- `timeAgo` is a pure function with no dependencies, safe to move
 
 
 ## History
 
-<!-- Kepp this updated. Earliest to latest -->
+<!-- Keep this updated. Earliest to latest -->
 
 - 2026-03-28: Initial Next.js, Tailwind and AI setup committed and pushed to GitHub
 - 2026-03-30: Dashboard UI Phase 1 completed — shadcn/ui init, /dashboard route, dark mode, top bar with search and New Item button, sidebar and main placeholders
@@ -31,3 +23,4 @@ In Progress
 - 2026-04-13: Dashboard collections completed — collections section fetches from Neon DB via Prisma, left colour band derived from dominant item type (neutral on tie), lucide icons per type with counts, fixed Prisma 7 client import path
 - 2026-04-13: Dashboard items completed — pinned and recent items from DB, type-coloured border, pin icon states, link URL display, createdAt timestamp, coloured border on collection cards
 - 2026-05-05: Stats & Sidebar completed — stats from DB, favourites/recents under Collections heading, "View all collections" link, coloured rounded square for recents, system item types from DB
+- 2026-05-05: Code Quality Quick Wins completed — extracted shared ICON_MAP to src/lib/icon-map.ts, moved timeAgo to src/lib/utils.ts, fixed Link2→Link icon bug in Sidebar
