@@ -1,21 +1,13 @@
 # Current Feature
 
-Dashboard Update Borders — see @context/features/09-dashboard-update-borders.md
-
 ## Status
 
-In Progress
+Not Started
 
 ## Goals and requirements
 
-- Item cards (Pinned and Recent) should have a coloured left-side border only — top, right, and bottom borders revert to the default grey (matching the stats cards at the top of the dashboard)
-- Collection cards keep their current styling: coloured left band plus coloured border on all sides
-- No functional changes — styling only
 
 ## Notes
-
-- The coloured left band on item cards should match the current `itemType.color` already used
-- Use the stats cards at the top of the dashboard as the reference for the grey border style
 
 
 ## History
@@ -32,3 +24,4 @@ In Progress
 - 2026-04-13: Dashboard items completed — pinned and recent items from DB, type-coloured border, pin icon states, link URL display, createdAt timestamp, coloured border on collection cards
 - 2026-05-05: Stats & Sidebar completed — stats from DB, favourites/recents under Collections heading, "View all collections" link, coloured rounded square for recents, system item types from DB
 - 2026-05-05: Code Quality Quick Wins completed — extracted shared ICON_MAP to src/lib/icon-map.ts, moved timeAgo to src/lib/utils.ts, fixed Link2→Link icon bug in Sidebar
+- 2026-05-05: Dashboard Update Borders completed — item cards (pinned & recent) now use coloured left band with grey border on other sides, matching collection card style
