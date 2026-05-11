@@ -1,0 +1,54 @@
+import Link from "next/link"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { credentialsSignIn, githubSignIn } from "@/lib/actions/auth"
+
+const ERRORS: Record<string, string> = {
+  invalid: "Invalid email or password.",
+}
+
+export function SignInForm({ error, success }: { error?: string; success?: string }) {
+  return (
+    <div className="rounded-xl border border-border bg-card p-8 shadow-sm">
+      <h1 className="mb-6 text-xl font-semibold text-foreground">Sign in to DevBox</h1>
+
+      {success && (
+        <p className="mb-4 text-sm text-green-500">Account created — sign in below.</p>
+      )}
+
+      <form action={credentialsSignIn} className="space-y-4">
+        <div className="space-y-1.5">
+          <label className="text-sm text-muted-foreground" htmlFor="email">Email</label>
+          <Input id="email" name="email" type="email" placeholder="you@example.com" required autoComplete="email" />
+        </div>
+        <div className="space-y-1.5">
+          <label className="text-sm text-muted-foreground" htmlFor="password">Password</label>
+          <Input id="password" name="password" type="password" placeholder="••••••••" required autoComplete="current-password" />
+        </div>
+
+        {error && <p className="text-sm text-destructive">{ERRORS[error] ?? "Something went wrong."}</p>}
+
+        <Button type="submit" className="w-full">Sign in</Button>
+      </form>
+
+      <div className="my-4 flex items-center gap-3">
+        <div className="flex-1 border-t border-border" />
+        <span className="text-xs text-muted-foreground">or</span>
+        <div className="flex-1 border-t border-border" />
+      </div>
+
+      <form action={githubSignIn}>
+        <Button type="submit" variant="outline" className="w-full">
+          Sign in with GitHub
+        </Button>
+      </form>
+
+      <p className="mt-6 text-center text-sm text-muted-foreground">
+        No account?{" "}
+        <Link href="/register" className="text-foreground underline-offset-4 hover:underline">
+          Register
+        </Link>
+      </p>
+    </div>
+  )
+}

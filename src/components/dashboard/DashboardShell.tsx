@@ -3,14 +3,16 @@
 import { useState } from "react";
 import { Sidebar } from "./Sidebar";
 import { TopBar } from "./TopBar";
-import type { SidebarData } from "./Sidebar";
+import type { SidebarData, SidebarUser } from "./Sidebar";
 
 export function DashboardShell({
   children,
   sidebarData,
+  user,
 }: {
   children: React.ReactNode;
   sidebarData: SidebarData;
+  user: SidebarUser;
 }) {
   const [collapsed, setCollapsed] = useState(false);
 
@@ -24,6 +26,7 @@ export function DashboardShell({
           collapsed={collapsed}
           onToggleCollapse={() => setCollapsed((v) => !v)}
           data={sidebarData}
+          user={user}
         />
         <main className="flex-1 overflow-y-auto p-6">{children}</main>
       </div>

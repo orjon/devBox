@@ -7,18 +7,24 @@ import {
   LayoutDashboard,
   File,
   Star,
-  Settings,
-  User,
+  LogOut,
   ChevronDown,
   PanelLeftClose,
   PanelLeft,
   ArrowRight,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { currentUser } from "@/data/mock-data";
+import { handleSignOut } from "@/lib/actions/auth";
+import { UserAvatar } from "@/components/ui/UserAvatar";
 import type { SidebarItemType } from "@/lib/db/items";
 import type { SidebarCollection } from "@/lib/db/collections";
 import { ICON_MAP } from "@/lib/icon-map";
+
+export type SidebarUser = {
+  name?: string | null
+  email?: string | null
+  image?: string | null
+}
 
 export type SidebarData = {
   itemTypes: SidebarItemType[]
@@ -30,13 +36,15 @@ export interface SidebarProps {
   collapsed: boolean;
   onToggleCollapse: () => void;
   data: SidebarData;
+  user: SidebarUser;
 }
 
-export function Sidebar({ collapsed, onToggleCollapse, data }: SidebarProps) {
+export function Sidebar({ collapsed, onToggleCollapse, data, user }: SidebarProps) {
   const [openSections, setOpenSections] = useState({
     types: true,
     collections: true,
   });
+  const [userMenuOpen, setUserMenuOpen] = useState(false);
 
   const toggle = (key: keyof typeof openSections) =>
     setOpenSections((prev) => ({ ...prev, [key]: !prev[key] }));
@@ -177,22 +185,40 @@ export function Sidebar({ collapsed, onToggleCollapse, data }: SidebarProps) {
           <div className="flex-1" />
 
           {/* ── User area ── */}
-          <div className="flex items-center gap-2 border-t border-sidebar-border px-2 py-3 lg:px-3">
-            <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-sidebar-primary">
-              <User className="h-4 w-4 text-sidebar-primary-foreground" />
-            </div>
-            {!collapsed && (
-              <>
-                <span className="flex-1 truncate text-sm text-sidebar-foreground">
-                  {currentUser.name}
-                </span>
-                <button
-                  className="text-sidebar-foreground/40 hover:text-sidebar-foreground"
-                  aria-label="Settings"
-                >
-                  <Settings className="h-4 w-4" />
-                </button>
-              </>
+          <div className="relative border-t border-sidebar-border px-2 py-3 lg:px-3">
+            <button
+              onClick={() => setUserMenuOpen((v) => !v)}
+              className="flex w-full items-center gap-2 rounded-md p-1 hover:bg-sidebar-accent"
+              aria-label="User menu"
+            >
+              <Link href="/profile" onClick={(e) => e.stopPropagation()}>
+                <UserAvatar image={user.image} name={user.name} />
+              </Link>
+              {!collapsed && (
+                <>
+                  <span className="flex-1 truncate text-sm text-sidebar-foreground">
+                    {user.name}
+                  </span>
+                  <ChevronDown className={cn("h-3.5 w-3.5 text-sidebar-foreground/40 transition-transform duration-200", userMenuOpen && "rotate-180")} />
+                </>
+              )}
+            </button>
+
+            {userMenuOpen && (
+              <div className={cn(
+                "absolute bottom-full left-2 right-2 mb-1 rounded-lg border border-sidebar-border bg-card shadow-lg",
+                collapsed && "left-14 right-auto w-40"
+              )}>
+                <form action={handleSignOut}>
+                  <button
+                    type="submit"
+                    className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-sm text-sidebar-foreground hover:bg-sidebar-accent"
+                  >
+                    <LogOut className="h-4 w-4" />
+                    Sign out
+                  </button>
+                </form>
+              </div>
             )}
           </div>
         </div>
