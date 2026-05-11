@@ -28,3 +28,4 @@ Not Started
 - 2026-05-05: Code Quality Quick Wins completed — extracted shared ICON_MAP to src/lib/icon-map.ts, moved timeAgo to src/lib/utils.ts, fixed Link2→Link icon bug in Sidebar
 - 2026-05-05: Dashboard Update Borders completed — item cards (pinned & recent) now use coloured left band with grey border on other sides, matching collection card style
 - 2026-05-11: Auth setup completed — NextAuth v5 + GitHub OAuth provider, split config pattern (auth.config.ts + auth.ts), Prisma adapter, JWT strategy, /dashboard/* route protection via proxy.ts, Session type extended with user.id
+- 2026-05-11: Auth credentials completed — Credentials provider (email/password) added to split config, bcrypt validation in auth.ts, /api/auth/register route with validation and password hashing
