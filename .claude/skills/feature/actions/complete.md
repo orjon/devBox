@@ -6,7 +6,7 @@
    - Clear Goals and Notes sections (keep placeholder comments)
    - Add feature summary to the END of History
 2. Stage ALL changes (feature code + current-feature.md reset) and commit with a descriptive message
-3. Switch to main and merge the feature branch (no push yet)
+3. Switch to staging and merge the feature branch (no push yet)
 4. Delete the local feature branch
-5. Push main to origin ONCE (single push with all changes)
+5. Push staging to origin ONCE (single push with all changes)
 6. If feature branch was previously pushed, delete it from origin

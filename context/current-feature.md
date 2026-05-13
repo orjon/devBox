@@ -1,16 +1,28 @@
-# Current Feature
+# Current Feature: Production & Staging Deployment Config
 
 ## Status
 
-Not Started
+In Progress
 
 ## Goals
 
-<!-- Add goals here -->
+- Create `staging` branch from `main`; update `/feature complete` to merge to `staging` instead of `main`
+- Verify Vercel is configured to deploy from `staging` branch (change from `main` in Project Settings → Git)
+- Add `production` Neon branch ID to CLAUDE.md for explicit MCP targeting
+- Verify `prisma migrate deploy` has run against the `production` Neon branch and schema is in sync
+- Set up Digital Ocean droplet: Node 20 (matches droplet), PM2, Nginx, SSL, deploy user, cloned repo, `.env.production.local`
+- Create GitHub Actions workflow (`.github/workflows/deploy-production.yml`) that SSH-deploys to droplet on push to `main`
+- Confirm GitHub OAuth app has callback URLs for both staging and production deployments
+- Verify `schema.prisma` datasource picks up `DATABASE_URL`/`DIRECT_URL` at runtime; add `directUrl` if needed
 
 ## Notes
 
-<!-- Add notes here -->
+- Vercel (staging) is already set up and working at `https://devbox-staging.vercel.app` — env vars and OAuth verified
+- Three-branch workflow: feature branch → `staging` (auto Vercel deploy) → `main` (manual, milestone-only, DO deploy)
+- `development` Neon branch used for both local dev and Vercel staging; `production` Neon branch used for DO production
+- `.env.production.local` on the droplet is gitignored and never committed — must be created manually on the server
+- GitHub Actions secrets required: `DO_SSH_HOST`, `DO_SSH_USER`, `DO_SSH_KEY`
+- `AUTH_SECRET` on production must be different from staging — generate with `openssl rand -base64 32`
 
 ## History
 

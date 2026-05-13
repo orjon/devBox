@@ -40,6 +40,13 @@ npm run lint     # run ESLint
 
 Always pass both `projectId: "small-queen-47794514"` and `branchId: "br-weathered-smoke-abl4ja4g"` on every Neon MCP tool call.
 
+**Production branch (reference only — never use in MCP tool calls during development):**
+
+| Setting | Value |
+|---|---|
+| Branch | `production` |
+| Branch ID | `br-soft-lake-abk76ojo` |
+
 ## Stack
 
 - **Next.js 16** (App Router) with React 19 and TypeScript
