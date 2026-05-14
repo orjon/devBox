@@ -15,9 +15,13 @@ jobs:
           username: ${{ secrets.DO_SSH_USER }}
           key: ${{ secrets.DO_SSH_KEY }}
           script: |
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+            nvm use 22
             cd /var/www/devbox
             git pull origin main
             set -a; source .env.production.local; set +a
             npm ci --omit=dev
+            npx prisma migrate deploy
             npm run build
             pm2 restart devbox || PORT=3003 pm2 start npm --name devbox -- start
