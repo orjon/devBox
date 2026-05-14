@@ -17,6 +17,8 @@ DevBox is a toolbox for developers to store and quickly access the resources the
 | Dashboard UI | Sidebar, collections grid, stats, pinned/recent items | ✅ Complete |
 | Database | Prisma 7 + Neon schema, migrations | ✅ Complete |
 | Seed data | Sample user, types, collections, and items | ✅ Complete |
+| Authentication | NextAuth v5, GitHub OAuth, email/password, custom sign-in/register pages | ✅ Complete |
+| Deployment | Vercel staging + Digital Ocean droplet, GitHub Actions CI/CD | 🔄 In Progress |
 
 ---
 
