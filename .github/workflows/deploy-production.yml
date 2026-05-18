@@ -24,5 +24,4 @@ jobs:
             npm ci
             npx prisma migrate deploy
             npm run build
-            pm2 delete devbox 2>/dev/null || true
-            PORT=3003 pm2 start npm --name devbox -- start
+            PORT=3003 pm2 restart devbox 2>/dev/null || PORT=3003 pm2 start npm --name devbox -- start
