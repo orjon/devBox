@@ -32,7 +32,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
           user.password
         )
         if (!valid) return null
-        if (!user.emailVerified) throw new UnverifiedEmailError()
+        if (!user.emailVerified && process.env.DISABLE_EMAIL_VERIFICATION !== "true") throw new UnverifiedEmailError()
         return { id: user.id, name: user.name, email: user.email, image: user.image }
       },
     }),

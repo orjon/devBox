@@ -59,6 +59,10 @@ export async function registerAction(formData: FormData) {
   const hashed = await bcrypt.hash(password, 12)
   await prisma.user.create({ data: { name, email, password: hashed } })
 
+  if (process.env.DISABLE_EMAIL_VERIFICATION === "true") {
+    await signIn("credentials", { email, password, redirectTo: "/dashboard" })
+  }
+
   const token = await createVerificationToken(email)
   const baseUrl = await getBaseUrl()
   const verificationUrl = `${baseUrl}/api/auth/verify-email?token=${token}`
@@ -70,6 +74,7 @@ export async function registerAction(formData: FormData) {
 export async function resendVerificationAction(formData: FormData) {
   const email = formData.get("email") as string
   if (!email) redirect("/verify-email?error=missing")
+  if (process.env.DISABLE_EMAIL_VERIFICATION === "true") redirect("/sign-in")
 
   const user = await prisma.user.findUnique({ where: { email } })
   if (!user || user.emailVerified) {
