@@ -6,11 +6,11 @@ Not Started
 
 ## Goals
 
-<!-- Bullet points of what success looks like -->
+<!-- Add goals here -->
 
 ## Notes
 
-<!-- Additional context, constraints, or details -->
+<!-- Add notes here -->
 
 ## History
 
@@ -31,3 +31,4 @@ Not Started
 - 2026-05-11: Auth credentials completed — Credentials provider (email/password) added to split config, bcrypt validation in auth.ts, /api/auth/register route with validation and password hashing
 - 2026-05-11: Auth UI completed — custom /sign-in and /register pages (server components + server actions), UserAvatar component (image or initials), sidebar user area with real session data, avatar dropdown with sign out
 - 2026-05-15: Production & Staging Deployment Config completed — staging branch on Vercel, production on Digital Ocean with PM2/Nginx/SSL, GitHub Actions auto-deploy on push to main, three GitHub OAuth apps (local/staging/production), Prisma migrate deploy on production Neon branch, AUTH_URL and AUTH_SECRET configured per environment
+- 2026-05-20: Email verification completed — Resend integration, verification token creation/expiry (24h), verify-email page with resend form, unverified users blocked at sign-in with prompt to verify, GitHub OAuth users bypass verification

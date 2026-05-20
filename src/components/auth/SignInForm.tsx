@@ -5,15 +5,30 @@ import { credentialsSignIn, githubSignIn } from "@/lib/actions/auth"
 
 const ERRORS: Record<string, string> = {
   invalid: "Invalid email or password.",
+  invalid_token: "Invalid verification link.",
+  expired_token: "Verification link has expired.",
 }
 
-export function SignInForm({ error, success }: { error?: string; success?: string }) {
+export function SignInForm({ error, success, verified }: { error?: string; success?: string; verified?: string }) {
   return (
     <div className="rounded-xl border border-border bg-card p-8 shadow-sm">
       <h1 className="mb-6 text-xl font-semibold text-foreground">Sign in to DevBox</h1>
 
       {success && (
         <p className="mb-4 text-sm text-green-500">Account created — sign in below.</p>
+      )}
+
+      {verified && (
+        <p className="mb-4 text-sm text-green-500">Email verified — you can now sign in.</p>
+      )}
+
+      {error === "unverified" && (
+        <p className="mb-4 text-sm text-destructive">
+          Please verify your email first.{" "}
+          <Link href="/verify-email" className="underline underline-offset-4">
+            Resend verification email
+          </Link>
+        </p>
       )}
 
       <form action={credentialsSignIn} className="space-y-4">
@@ -26,7 +41,9 @@ export function SignInForm({ error, success }: { error?: string; success?: strin
           <Input id="password" name="password" type="password" placeholder="••••••••" required autoComplete="current-password" />
         </div>
 
-        {error && <p className="text-sm text-destructive">{ERRORS[error] ?? "Something went wrong."}</p>}
+        {error && error !== "unverified" && (
+          <p className="text-sm text-destructive">{ERRORS[error] ?? "Something went wrong."}</p>
+        )}
 
         <Button type="submit" className="w-full">Sign in</Button>
       </form>
