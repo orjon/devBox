@@ -6,8 +6,8 @@ import { AuthError } from "next-auth"
 import bcrypt from "bcryptjs"
 import { signIn, signOut } from "@/auth"
 import { prisma } from "@/lib/prisma"
-import { createVerificationToken } from "@/lib/verification"
-import { sendVerificationEmail } from "@/lib/email"
+import { createVerificationToken, createPasswordResetToken, verifyPasswordResetToken } from "@/lib/verification"
+import { sendVerificationEmail, sendPasswordResetEmail } from "@/lib/email"
 
 async function getBaseUrl() {
   const headersList = await headers()
@@ -87,6 +87,51 @@ export async function resendVerificationAction(formData: FormData) {
   await sendVerificationEmail(email, user.name ?? "there", verificationUrl)
 
   redirect(`/verify-email?email=${encodeURIComponent(email)}&sent=1`)
+}
+
+export async function requestPasswordResetAction(formData: FormData) {
+  const email = formData.get("email") as string
+  if (!email) redirect("/forgot-password?error=missing")
+
+  const user = await prisma.user.findUnique({ where: { email } })
+  if (user && user.password) {
+    try {
+      const token = await createPasswordResetToken(email)
+      const baseUrl = await getBaseUrl()
+      const resetUrl = `${baseUrl}/reset-password?token=${token}`
+      await sendPasswordResetEmail(email, user.name ?? "there", resetUrl)
+    } catch {
+      // Swallow email errors — always show the same confirmation to avoid leaking info
+    }
+  }
+
+  redirect("/forgot-password?sent=1")
+}
+
+export async function resetPasswordAction(formData: FormData) {
+  const token = formData.get("token") as string
+  const password = formData.get("password") as string
+  const confirmPassword = formData.get("confirmPassword") as string
+
+  if (!token || !password || !confirmPassword) {
+    redirect(`/reset-password?token=${token}&error=missing`)
+  }
+  if (password !== confirmPassword) {
+    redirect(`/reset-password?token=${token}&error=mismatch`)
+  }
+
+  const result = await verifyPasswordResetToken(token)
+  if (!result) {
+    redirect("/reset-password?error=invalid")
+  }
+
+  const hashed = await bcrypt.hash(password, 12)
+  await prisma.user.update({
+    where: { email: result.email },
+    data: { password: hashed },
+  })
+
+  redirect("/sign-in?success=password-reset")
 }
 
 export async function handleSignOut() {

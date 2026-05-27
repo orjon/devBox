@@ -9,13 +9,19 @@ const ERRORS: Record<string, string> = {
   expired_token: "Verification link has expired.",
 }
 
+const SUCCESS: Record<string, string> = {
+  "password-reset": "Password reset — sign in with your new password.",
+}
+
 export function SignInForm({ error, success, verified }: { error?: string; success?: string; verified?: string }) {
   return (
     <div className="rounded-xl border border-border bg-card p-8 shadow-sm">
       <h1 className="mb-6 text-xl font-semibold text-foreground">Sign in to DevBox</h1>
 
       {success && (
-        <p className="mb-4 text-sm text-green-500">Account created — sign in below.</p>
+        <p className="mb-4 text-sm text-green-500">
+          {SUCCESS[success] ?? "Account created — sign in below."}
+        </p>
       )}
 
       {verified && (
@@ -37,7 +43,12 @@ export function SignInForm({ error, success, verified }: { error?: string; succe
           <Input id="email" name="email" type="email" placeholder="you@example.com" required autoComplete="email" />
         </div>
         <div className="space-y-1.5">
-          <label className="text-sm text-muted-foreground" htmlFor="password">Password</label>
+          <div className="flex items-center justify-between">
+            <label className="text-sm text-muted-foreground" htmlFor="password">Password</label>
+            <Link href="/forgot-password" className="text-xs text-muted-foreground underline-offset-4 hover:underline">
+              Forgot password?
+            </Link>
+          </div>
           <Input id="password" name="password" type="password" placeholder="••••••••" required autoComplete="current-password" />
         </div>
 
