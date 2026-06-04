@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { credentialsSignIn, githubSignIn } from "@/lib/actions/auth"
+import { credentialsSignIn, githubSignIn, googleSignIn } from "@/lib/actions/auth"
 
 const ERRORS: Record<string, string> = {
   invalid: "Invalid email or password.",
@@ -68,6 +68,12 @@ export function SignInForm({ error, success, verified }: { error?: string; succe
       <form action={githubSignIn}>
         <Button type="submit" variant="outline" className="w-full">
           Sign in with GitHub
+        </Button>
+      </form>
+
+      <form action={googleSignIn} className="mt-2">
+        <Button type="submit" variant="outline" className="w-full">
+          Sign in with Google
         </Button>
       </form>
 

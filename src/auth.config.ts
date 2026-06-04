@@ -1,5 +1,6 @@
 import type { NextAuthConfig } from "next-auth"
 import GitHub from "next-auth/providers/github"
+import Google from "next-auth/providers/google"
 import Credentials from "next-auth/providers/credentials"
 
 export const authConfig = {
@@ -8,6 +9,7 @@ export const authConfig = {
   },
   providers: [
     GitHub,
+    Google,
     Credentials({
       credentials: {
         email: { label: "Email", type: "email" },

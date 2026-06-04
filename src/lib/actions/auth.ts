@@ -38,6 +38,10 @@ export async function githubSignIn() {
   await signIn("github", { redirectTo: "/dashboard" })
 }
 
+export async function googleSignIn() {
+  await signIn("google", { redirectTo: "/dashboard" })
+}
+
 export async function registerAction(formData: FormData) {
   const name = formData.get("name") as string
   const email = formData.get("email") as string
