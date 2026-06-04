@@ -57,13 +57,13 @@ function toDominantColor(items: CollectionRow["items"]): string {
 }
 
 // Fetches favorite and recent non-favorite collections for the sidebar
-export async function getSidebarCollections(): Promise<SidebarCollectionsData> {
+export async function getSidebarCollections(userId: string): Promise<SidebarCollectionsData> {
   const include = {
     items: { include: { item: { include: { itemType: true } } } },
   }
   const [favoriteRows, recentRows] = await Promise.all([
-    prisma.collection.findMany({ where: { isFavorite: true }, include, orderBy: { name: "asc" } }),
-    prisma.collection.findMany({ where: { isFavorite: false }, take: 5, include, orderBy: { createdAt: "desc" } }),
+    prisma.collection.findMany({ where: { isFavorite: true, userId }, include, orderBy: { name: "asc" } }),
+    prisma.collection.findMany({ where: { isFavorite: false, userId }, take: 5, include, orderBy: { createdAt: "desc" } }),
   ])
 
   const toSidebarCollection = (col: CollectionRow): SidebarCollection => ({
@@ -82,9 +82,10 @@ export async function getSidebarCollections(): Promise<SidebarCollectionsData> {
 
 // Fetches the most recently created collections, with per-type item counts
 // and a dominant color derived from the most-used item type.
-export async function getRecentCollections(limit = 6): Promise<CollectionCardData[]> {
+export async function getRecentCollections(userId: string, limit = 6): Promise<CollectionCardData[]> {
   const collections = await prisma.collection.findMany({
     take: limit,
+    where: { userId },
     orderBy: { createdAt: "desc" },
     include: {
       items: {

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { auth } from "@/auth";
 import { StatsCards, buildStats } from "@/components/dashboard/StatsCards";
 import { CollectionCard } from "@/components/dashboard/CollectionCard";
 import { ItemCard } from "@/components/dashboard/ItemCard";
@@ -7,11 +8,13 @@ import { getRecentCollections } from "@/lib/db/collections";
 import { getPinnedItems, getRecentItems, getDashboardStats } from "@/lib/db/items";
 
 export default async function DashboardPage() {
+  const session = await auth();
+  const userId = session?.user?.id ?? "";
   const [collections, pinnedItems, recentItems, statsData] = await Promise.all([
-    getRecentCollections(6),
-    getPinnedItems(),
-    getRecentItems(10),
-    getDashboardStats(),
+    getRecentCollections(userId, 6),
+    getPinnedItems(userId),
+    getRecentItems(userId, 10),
+    getDashboardStats(userId),
   ]);
 
   const stats = buildStats(

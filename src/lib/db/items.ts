@@ -65,9 +65,9 @@ function toCardData(item: {
 }
 
 // Fetches all pinned items, ordered most recently used first
-export async function getPinnedItems(): Promise<ItemCardData[]> {
+export async function getPinnedItems(userId: string): Promise<ItemCardData[]> {
   const items = await prisma.item.findMany({
-    where: { isPinned: true },
+    where: { isPinned: true, userId },
     orderBy: { lastUsedAt: "desc" },
     include: itemInclude,
   })
@@ -75,9 +75,10 @@ export async function getPinnedItems(): Promise<ItemCardData[]> {
 }
 
 // Fetches the most recently used items
-export async function getRecentItems(limit = 10): Promise<ItemCardData[]> {
+export async function getRecentItems(userId: string, limit = 10): Promise<ItemCardData[]> {
   const items = await prisma.item.findMany({
     take: limit,
+    where: { userId },
     orderBy: { lastUsedAt: "desc" },
     include: itemInclude,
   })
@@ -94,10 +95,10 @@ export type SidebarItemType = {
 
 // Fetches all system item types with per-type item counts for the sidebar.
 // Deduplicates by name (seed bug can produce duplicate type records) and sums counts.
-export async function getItemTypesWithCounts(): Promise<SidebarItemType[]> {
+export async function getItemTypesWithCounts(userId: string): Promise<SidebarItemType[]> {
   const types = await prisma.itemType.findMany({
     where: { isSystem: true },
-    include: { _count: { select: { items: true } } },
+    include: { _count: { select: { items: { where: { userId } } } } },
   })
   const byName = new Map<string, SidebarItemType>()
   for (const t of types) {
@@ -112,13 +113,13 @@ export async function getItemTypesWithCounts(): Promise<SidebarItemType[]> {
 }
 
 // Fetches aggregate counts for the stats cards
-export async function getDashboardStats(): Promise<DashboardStats> {
+export async function getDashboardStats(userId: string): Promise<DashboardStats> {
   const [itemCount, collectionCount, favoriteItemCount, favoriteCollectionCount] =
     await Promise.all([
-      prisma.item.count(),
-      prisma.collection.count(),
-      prisma.item.count({ where: { isFavorite: true } }),
-      prisma.collection.count({ where: { isFavorite: true } }),
+      prisma.item.count({ where: { userId } }),
+      prisma.collection.count({ where: { userId } }),
+      prisma.item.count({ where: { isFavorite: true, userId } }),
+      prisma.collection.count({ where: { isFavorite: true, userId } }),
     ])
 
   return { itemCount, collectionCount, favoriteItemCount, favoriteCollectionCount }

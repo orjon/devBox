@@ -8,10 +8,11 @@ export default async function DashboardLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const [session, itemTypes, { favorites, recents }] = await Promise.all([
-    auth(),
-    getItemTypesWithCounts(),
-    getSidebarCollections(),
+  const session = await auth();
+  const userId = session?.user?.id ?? "";
+  const [itemTypes, { favorites, recents }] = await Promise.all([
+    getItemTypesWithCounts(userId),
+    getSidebarCollections(userId),
   ]);
 
   const user = {
