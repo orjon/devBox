@@ -1,29 +1,16 @@
-# Current Feature: Profile Page
+# Current Feature
 
 ## Status
 
-In Progress
+Not Started
 
 ## Goals
 
-- `/profile` route exists and is protected (requires auth)
-- Displays user info: name, email, avatar (OAuth image or initials fallback), account creation date, last logged in date
-- Shows usage stats: total items, total collections, breakdown by item type
-- Change password action appears only for email/password users (not OAuth)
-- Delete account action with confirmation dialog
+<!-- Add goals here -->
 
 ## Notes
 
-- Avatar: use OAuth image if available, otherwise initials from name/email (matches existing UserAvatar component)
-- Change password: only for users who have a password field set (email signup); GitHub/Google OAuth users skip this
-- Delete account: requires confirmation dialog to prevent accidental deletion
-- Item type breakdown: counts per type (snippets, prompts, notes, commands, links, files, images)
-- Follow existing data fetching patterns (server component + db query functions)
-- Last login date dropped — schema has no lastLoginAt field
-- Sidebar is the app shell, not dashboard-specific — refactor into an (app) route group:
-  - New `src/app/(app)/layout.tsx` holds the shell (sidebar, auth, data fetching)
-  - `src/app/(app)/dashboard/` and `src/app/(app)/profile/` both live under it
-  - Middleware matcher updated to cover `/(app)` routes (dashboard + profile)
+<!-- Add notes here -->
 
 ## History
 
@@ -47,3 +34,4 @@ In Progress
 - 2026-05-20: Email verification completed — Resend integration, verification token creation/expiry (24h), verify-email page with resend form, unverified users blocked at sign-in with prompt to verify, GitHub OAuth users bypass verification
 - 2026-05-20: Disable email verification flag completed — DISABLE_EMAIL_VERIFICATION env var bypasses verification entirely; when set, new registrations auto sign-in and redirect to /dashboard
 - 2026-05-27: Forgot password completed — "Forgot password?" link on sign-in page, /forgot-password request form, /reset-password page, reset tokens stored in VerificationToken with reset: prefix (24h expiry), sendPasswordResetEmail via Resend, password updated with bcrypt on success
+- 2026-06-05: Profile page completed — /profile route with sidebar via (app) route group refactor, user info card (avatar, name, email, join date), usage stats (item count, collections, per-type breakdown), change password form (email users only), delete account with confirmation; fixed ItemType seed bug (upsert used "" instead of null for userId), cleaned 19 duplicate DB rows, added partial unique index, removed code-level deduplication workarounds
