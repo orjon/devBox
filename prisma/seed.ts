@@ -26,11 +26,18 @@ async function main() {
   const typeMap: Record<string, string> = {}
 
   for (const type of systemTypes) {
-    const record = await prisma.itemType.upsert({
-      where: { name_userId: { name: type.name, userId: "" } },
-      update: { icon: type.icon, color: type.color },
-      create: { ...type, userId: null },
+    const existing = await prisma.itemType.findFirst({
+      where: { name: type.name, isSystem: true, userId: null },
     })
+    let record
+    if (existing) {
+      record = await prisma.itemType.update({
+        where: { id: existing.id },
+        data: { icon: type.icon, color: type.color },
+      })
+    } else {
+      record = await prisma.itemType.create({ data: { ...type, userId: null } })
+    }
     typeMap[type.name] = record.id
     console.log(`  ✓ ${type.name}`)
   }

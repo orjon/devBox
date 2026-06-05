@@ -93,23 +93,13 @@ export type SidebarItemType = {
   count: number
 }
 
-// Fetches all system item types with per-type item counts for the sidebar.
-// Deduplicates by name (seed bug can produce duplicate type records) and sums counts.
 export async function getItemTypesWithCounts(userId: string): Promise<SidebarItemType[]> {
   const types = await prisma.itemType.findMany({
     where: { isSystem: true },
     include: { _count: { select: { items: { where: { userId } } } } },
+    orderBy: { name: "asc" },
   })
-  const byName = new Map<string, SidebarItemType>()
-  for (const t of types) {
-    const existing = byName.get(t.name)
-    if (existing) {
-      existing.count += t._count.items
-    } else {
-      byName.set(t.name, { id: t.id, name: t.name, icon: t.icon, color: t.color, count: t._count.items })
-    }
-  }
-  return [...byName.values()]
+  return types.map((t) => ({ id: t.id, name: t.name, icon: t.icon, color: t.color, count: t._count.items }))
 }
 
 // Fetches aggregate counts for the stats cards

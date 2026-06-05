@@ -1,0 +1,26 @@
+- generic [ref=e1]:
+  - generic [ref=e4]:
+    - heading "Sign in to DevBox" [level=1] [ref=e5]
+    - generic [ref=e6]:
+      - generic [ref=e7]:
+        - text: Email
+        - textbox "Email" [ref=e8]:
+          - /placeholder: you@example.com
+          - text: john@mail.com
+      - generic [ref=e9]:
+        - generic [ref=e10]:
+          - generic [ref=e11]: Password
+          - link "Forgot password?" [ref=e12] [cursor=pointer]:
+            - /url: /forgot-password
+        - textbox "Password" [ref=e13]:
+          - /placeholder: ••••••••
+          - text: password123
+      - button "Sign in" [active] [ref=e14]
+    - generic [ref=e17]: or
+    - button "Sign in with GitHub" [ref=e20]
+    - button "Sign in with Google" [ref=e22]
+    - paragraph [ref=e23]:
+      - text: No account?
+      - link "Register" [ref=e24] [cursor=pointer]:
+        - /url: /register
+  - alert [ref=e25]

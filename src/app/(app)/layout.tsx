@@ -3,7 +3,7 @@ import { DashboardShell } from "@/components/dashboard/DashboardShell";
 import { getItemTypesWithCounts } from "@/lib/db/items";
 import { getSidebarCollections } from "@/lib/db/collections";
 
-export default async function DashboardLayout({
+export default async function AppLayout({
   children,
 }: {
   children: React.ReactNode;

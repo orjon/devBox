@@ -1,0 +1,157 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e4]: DevBox
+    - generic [ref=e5]:
+      - img [ref=e6]
+      - textbox "Search items..." [ref=e9]
+    - button "+ New Item" [ref=e11]
+  - generic [ref=e12]:
+    - complementary [ref=e13]:
+      - generic [ref=e14]:
+        - generic [ref=e15]:
+          - generic [ref=e16]:
+            - generic [ref=e17]: Navigation
+            - button "Collapse sidebar" [ref=e18]:
+              - img [ref=e19]
+          - link "Dashboard" [ref=e22] [cursor=pointer]:
+            - /url: /dashboard
+            - img [ref=e23]
+            - generic [ref=e28]: Dashboard
+        - generic [ref=e29]:
+          - button "Types" [ref=e30]:
+            - generic [ref=e31]: Types
+            - img [ref=e32]
+          - link "All Items 18" [ref=e34] [cursor=pointer]:
+            - /url: /items
+            - img [ref=e35]
+            - generic [ref=e40]: All Items
+            - generic [ref=e41]: "18"
+          - link "Snippets 4" [ref=e42] [cursor=pointer]:
+            - /url: /items/snippets
+            - img [ref=e43]
+            - generic [ref=e46]: Snippets
+            - generic [ref=e47]: "4"
+          - link "Prompts 3" [ref=e48] [cursor=pointer]:
+            - /url: /items/prompts
+            - img [ref=e49]
+            - generic [ref=e52]: Prompts
+            - generic [ref=e53]: "3"
+          - link "Commands 5" [ref=e54] [cursor=pointer]:
+            - /url: /items/commands
+            - img [ref=e55]
+            - generic [ref=e57]: Commands
+            - generic [ref=e58]: "5"
+          - link "Notes 0" [ref=e59] [cursor=pointer]:
+            - /url: /items/notes
+            - img [ref=e60]
+            - generic [ref=e63]: Notes
+            - generic [ref=e64]: "0"
+          - link "Files 0" [ref=e65] [cursor=pointer]:
+            - /url: /items/files
+            - img [ref=e66]
+            - generic [ref=e69]: Files
+            - generic [ref=e70]: "0"
+          - link "Images 0" [ref=e71] [cursor=pointer]:
+            - /url: /items/images
+            - img [ref=e72]
+            - generic [ref=e76]: Images
+            - generic [ref=e77]: "0"
+          - link "Links 6" [ref=e78] [cursor=pointer]:
+            - /url: /items/links
+            - img [ref=e79]
+            - generic [ref=e82]: Links
+            - generic [ref=e83]: "6"
+        - generic [ref=e84]:
+          - button "Collections" [ref=e85]:
+            - generic [ref=e86]: Collections
+            - img [ref=e87]
+          - link "AI Workflows 3" [ref=e89] [cursor=pointer]:
+            - /url: /collections/cmnxqbzn9000bsd5g5vshbpw9
+            - img [ref=e90]
+            - generic [ref=e92]: AI Workflows
+            - generic [ref=e93]: "3"
+          - link "React Patterns 3" [ref=e94] [cursor=pointer]:
+            - /url: /collections/cmnxqbzks0007sd5gsqitquqm
+            - img [ref=e95]
+            - generic [ref=e97]: React Patterns
+            - generic [ref=e98]: "3"
+          - link "Design Resources 4" [ref=e99] [cursor=pointer]:
+            - /url: /collections/cmnxqbzt6000psd5gqmqw1dww
+            - generic [ref=e101]: Design Resources
+            - generic [ref=e102]: "4"
+          - link "Terminal Commands 4" [ref=e103] [cursor=pointer]:
+            - /url: /collections/cmnxqbzr6000ksd5gxa6e3hpj
+            - generic [ref=e105]: Terminal Commands
+            - generic [ref=e106]: "4"
+          - link "DevOps 4" [ref=e107] [cursor=pointer]:
+            - /url: /collections/cmnxqbzpa000fsd5gdi9lnxw4
+            - generic [ref=e109]: DevOps
+            - generic [ref=e110]: "4"
+          - link "View all collections" [ref=e111] [cursor=pointer]:
+            - /url: /collections
+            - text: View all collections
+            - img [ref=e112]
+        - button "User menu" [ref=e116]:
+          - link "JD" [ref=e117] [cursor=pointer]:
+            - /url: /profile
+            - generic [ref=e118]: JD
+          - generic [ref=e119]: John Doe
+          - img [ref=e120]
+    - main [ref=e122]:
+      - generic [ref=e123]:
+        - heading "Profile" [level=1] [ref=e124]
+        - generic [ref=e125]:
+          - generic [ref=e126]: JD
+          - generic [ref=e127]:
+            - paragraph [ref=e128]: John Doe
+            - paragraph [ref=e129]: john@mail.com
+            - paragraph [ref=e130]: Member since 8 April 2026
+        - generic [ref=e131]:
+          - heading "Usage" [level=2] [ref=e132]
+          - generic [ref=e133]:
+            - generic [ref=e134]:
+              - paragraph [ref=e135]: "18"
+              - paragraph [ref=e136]: Items
+            - generic [ref=e137]:
+              - paragraph [ref=e138]: "5"
+              - paragraph [ref=e139]: Collections
+          - generic [ref=e140]:
+            - generic [ref=e141]:
+              - generic [ref=e142]:
+                - img [ref=e143]
+                - generic [ref=e145]: Command
+              - generic [ref=e146]: "5"
+            - generic [ref=e147]:
+              - generic [ref=e148]:
+                - img [ref=e149]
+                - generic [ref=e152]: File
+              - generic [ref=e153]: "0"
+            - generic [ref=e154]:
+              - generic [ref=e155]:
+                - img [ref=e156]
+                - generic [ref=e160]: Image
+              - generic [ref=e161]: "0"
+            - generic [ref=e162]:
+              - generic [ref=e163]:
+                - img [ref=e164]
+                - generic [ref=e167]: Link
+              - generic [ref=e168]: "6"
+            - generic [ref=e169]:
+              - generic [ref=e170]:
+                - img [ref=e171]
+                - generic [ref=e174]: Note
+              - generic [ref=e175]: "0"
+            - generic [ref=e176]:
+              - generic [ref=e177]:
+                - img [ref=e178]
+                - generic [ref=e181]: Prompt
+              - generic [ref=e182]: "3"
+            - generic [ref=e183]:
+              - generic [ref=e184]:
+                - img [ref=e185]
+                - generic [ref=e188]: Snippet
+              - generic [ref=e189]: "4"
+        - generic [ref=e190]:
+          - heading "Account" [level=2] [ref=e191]
+          - button "Change password" [ref=e192]
+          - button "Delete account" [ref=e193]

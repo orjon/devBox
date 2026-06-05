@@ -1,0 +1,341 @@
+- generic [active] [ref=e1]:
+  - alert [ref=e25]
+  - generic [ref=e26]:
+    - banner [ref=e27]:
+      - generic [ref=e28]: DevBox
+      - generic [ref=e29]:
+        - img [ref=e30]
+        - textbox "Search items..." [ref=e33]
+      - button "+ New Item" [ref=e35]
+    - generic [ref=e36]:
+      - complementary [ref=e37]:
+        - generic [ref=e38]:
+          - generic [ref=e39]:
+            - generic [ref=e40]:
+              - generic [ref=e41]: Navigation
+              - button "Collapse sidebar" [ref=e42]:
+                - img [ref=e43]
+            - link "Dashboard" [ref=e46] [cursor=pointer]:
+              - /url: /dashboard
+              - img [ref=e47]
+              - generic [ref=e52]: Dashboard
+          - generic [ref=e53]:
+            - button "Types" [ref=e54]:
+              - generic [ref=e55]: Types
+              - img [ref=e56]
+            - link "All Items 18" [ref=e58] [cursor=pointer]:
+              - /url: /items
+              - img [ref=e59]
+              - generic [ref=e64]: All Items
+              - generic [ref=e65]: "18"
+            - link "Snippets 4" [ref=e66] [cursor=pointer]:
+              - /url: /items/snippets
+              - img [ref=e67]
+              - generic [ref=e70]: Snippets
+              - generic [ref=e71]: "4"
+            - link "Prompts 3" [ref=e72] [cursor=pointer]:
+              - /url: /items/prompts
+              - img [ref=e73]
+              - generic [ref=e76]: Prompts
+              - generic [ref=e77]: "3"
+            - link "Commands 5" [ref=e78] [cursor=pointer]:
+              - /url: /items/commands
+              - img [ref=e79]
+              - generic [ref=e81]: Commands
+              - generic [ref=e82]: "5"
+            - link "Notes 0" [ref=e83] [cursor=pointer]:
+              - /url: /items/notes
+              - img [ref=e84]
+              - generic [ref=e87]: Notes
+              - generic [ref=e88]: "0"
+            - link "Files 0" [ref=e89] [cursor=pointer]:
+              - /url: /items/files
+              - img [ref=e90]
+              - generic [ref=e93]: Files
+              - generic [ref=e94]: "0"
+            - link "Images 0" [ref=e95] [cursor=pointer]:
+              - /url: /items/images
+              - img [ref=e96]
+              - generic [ref=e100]: Images
+              - generic [ref=e101]: "0"
+            - link "Links 6" [ref=e102] [cursor=pointer]:
+              - /url: /items/links
+              - img [ref=e103]
+              - generic [ref=e106]: Links
+              - generic [ref=e107]: "6"
+          - generic [ref=e108]:
+            - button "Collections" [ref=e109]:
+              - generic [ref=e110]: Collections
+              - img [ref=e111]
+            - link "AI Workflows 3" [ref=e113] [cursor=pointer]:
+              - /url: /collections/cmnxqbzn9000bsd5g5vshbpw9
+              - img [ref=e114]
+              - generic [ref=e116]: AI Workflows
+              - generic [ref=e117]: "3"
+            - link "React Patterns 3" [ref=e118] [cursor=pointer]:
+              - /url: /collections/cmnxqbzks0007sd5gsqitquqm
+              - img [ref=e119]
+              - generic [ref=e121]: React Patterns
+              - generic [ref=e122]: "3"
+            - link "Design Resources 4" [ref=e123] [cursor=pointer]:
+              - /url: /collections/cmnxqbzt6000psd5gqmqw1dww
+              - generic [ref=e125]: Design Resources
+              - generic [ref=e126]: "4"
+            - link "Terminal Commands 4" [ref=e127] [cursor=pointer]:
+              - /url: /collections/cmnxqbzr6000ksd5gxa6e3hpj
+              - generic [ref=e129]: Terminal Commands
+              - generic [ref=e130]: "4"
+            - link "DevOps 4" [ref=e131] [cursor=pointer]:
+              - /url: /collections/cmnxqbzpa000fsd5gdi9lnxw4
+              - generic [ref=e133]: DevOps
+              - generic [ref=e134]: "4"
+            - link "View all collections" [ref=e135] [cursor=pointer]:
+              - /url: /collections
+              - text: View all collections
+              - img [ref=e136]
+          - button "User menu" [ref=e140]:
+            - link "JD" [ref=e141] [cursor=pointer]:
+              - /url: /profile
+              - generic [ref=e142]: JD
+            - generic [ref=e143]: John Doe
+            - img [ref=e144]
+      - main [ref=e146]:
+        - generic [ref=e147]:
+          - generic [ref=e148]:
+            - generic [ref=e149]:
+              - img [ref=e151]
+              - generic [ref=e155]:
+                - paragraph [ref=e156]: "18"
+                - paragraph [ref=e157]: Items
+            - generic [ref=e158]:
+              - img [ref=e160]
+              - generic [ref=e162]:
+                - paragraph [ref=e163]: "5"
+                - paragraph [ref=e164]: Collections
+            - generic [ref=e165]:
+              - img [ref=e167]
+              - generic [ref=e169]:
+                - paragraph [ref=e170]: "0"
+                - paragraph [ref=e171]: Favourite Items
+            - generic [ref=e172]:
+              - img [ref=e174]
+              - generic [ref=e176]:
+                - paragraph [ref=e177]: "2"
+                - paragraph [ref=e178]: Favourite Collections
+          - generic [ref=e179]:
+            - generic [ref=e180]:
+              - heading "Collections" [level=2] [ref=e181]
+              - link "View All" [ref=e182] [cursor=pointer]:
+                - /url: /collections
+                - text: View All
+                - img [ref=e183]
+            - generic [ref=e185]:
+              - link "Design Resources UI/UX resources and references 4 4 items" [ref=e186] [cursor=pointer]:
+                - /url: /collections/cmnxqbzt6000psd5gqmqw1dww
+                - generic [ref=e188]:
+                  - generic [ref=e190]: Design Resources
+                  - paragraph [ref=e191]: UI/UX resources and references
+                  - generic [ref=e192]:
+                    - generic [ref=e194]:
+                      - img [ref=e195]
+                      - generic [ref=e198]: "4"
+                    - generic [ref=e199]: 4 items
+              - link "Terminal Commands Useful shell commands for everyday development 4 4 items" [ref=e200] [cursor=pointer]:
+                - /url: /collections/cmnxqbzr6000ksd5gxa6e3hpj
+                - generic [ref=e202]:
+                  - generic [ref=e204]: Terminal Commands
+                  - paragraph [ref=e205]: Useful shell commands for everyday development
+                  - generic [ref=e206]:
+                    - generic [ref=e208]:
+                      - img [ref=e209]
+                      - generic [ref=e211]: "4"
+                    - generic [ref=e212]: 4 items
+              - link "DevOps Infrastructure and deployment resources 2 1 1 4 items" [ref=e213] [cursor=pointer]:
+                - /url: /collections/cmnxqbzpa000fsd5gdi9lnxw4
+                - generic [ref=e215]:
+                  - generic [ref=e217]: DevOps
+                  - paragraph [ref=e218]: Infrastructure and deployment resources
+                  - generic [ref=e219]:
+                    - generic [ref=e220]:
+                      - generic [ref=e221]:
+                        - img [ref=e222]
+                        - generic [ref=e225]: "2"
+                      - generic [ref=e226]:
+                        - img [ref=e227]
+                        - generic [ref=e230]: "1"
+                      - generic [ref=e231]:
+                        - img [ref=e232]
+                        - generic [ref=e234]: "1"
+                    - generic [ref=e235]: 4 items
+              - link "AI Workflows AI prompts and workflow automations 3 3 items" [ref=e236] [cursor=pointer]:
+                - /url: /collections/cmnxqbzn9000bsd5g5vshbpw9
+                - generic [ref=e238]:
+                  - generic [ref=e239]:
+                    - generic [ref=e240]: AI Workflows
+                    - img [ref=e241]
+                  - paragraph [ref=e243]: AI prompts and workflow automations
+                  - generic [ref=e244]:
+                    - generic [ref=e246]:
+                      - img [ref=e247]
+                      - generic [ref=e250]: "3"
+                    - generic [ref=e251]: 3 items
+              - link "React Patterns Reusable React patterns and hooks 3 3 items" [ref=e252] [cursor=pointer]:
+                - /url: /collections/cmnxqbzks0007sd5gsqitquqm
+                - generic [ref=e254]:
+                  - generic [ref=e255]:
+                    - generic [ref=e256]: React Patterns
+                    - img [ref=e257]
+                  - paragraph [ref=e259]: Reusable React patterns and hooks
+                  - generic [ref=e260]:
+                    - generic [ref=e262]:
+                      - img [ref=e263]
+                      - generic [ref=e266]: "3"
+                    - generic [ref=e267]: 3 items
+          - generic [ref=e268]:
+            - generic [ref=e269]:
+              - heading "Pinned Items" [level=2] [ref=e270]
+              - link "View All" [ref=e271] [cursor=pointer]:
+                - /url: /items?pinned=true
+                - text: View All
+                - img [ref=e272]
+            - generic [ref=e274]:
+              - 'link "Custom Hooks import { useState, useEffect, useCallback } from \"react\" export function useDebounce<T>(value: T, delay: number): T { const [debounced, setDebounced] = useState(value) useEffect(() => { 51d ago" [ref=e275] [cursor=pointer]':
+                - /url: /items/cmnxqbzlj0008sd5gpob9pejo
+                - generic [ref=e277]:
+                  - generic [ref=e278]:
+                    - generic [ref=e279]:
+                      - img [ref=e280]
+                      - generic [ref=e283]: Custom Hooks
+                    - img [ref=e284]
+                  - generic [ref=e287]: "import { useState, useEffect, useCallback } from \"react\" export function useDebounce<T>(value: T, delay: number): T { const [debounced, setDebounced] = useState(value) useEffect(() => {"
+                  - generic [ref=e289]: 51d ago
+              - 'link "Code Review Prompt Review the following code and provide feedback on: 1. Correctness — are there any bugs or edge cases? 2. Readability — is the code clear and well-structured? 3. Performance — are there any obvious inefficiencies? 4. Security — are there any vulnerabilities? 51d ago" [ref=e290] [cursor=pointer]':
+                - /url: /items/cmnxqbznw000csd5gm27wlow2
+                - generic [ref=e292]:
+                  - generic [ref=e293]:
+                    - generic [ref=e294]:
+                      - img [ref=e295]
+                      - generic [ref=e298]: Code Review Prompt
+                    - img [ref=e299]
+                  - generic [ref=e302]: "Review the following code and provide feedback on: 1. Correctness — are there any bugs or edge cases? 2. Readability — is the code clear and well-structured? 3. Performance — are there any obvious inefficiencies? 4. Security — are there any vulnerabilities?"
+                  - generic [ref=e304]: 51d ago
+              - 'link "Git Operations # Undo last commit (keep changes staged) git reset --soft HEAD~1 # Interactive rebase last N commits git rebase -i HEAD~5 51d ago" [ref=e305] [cursor=pointer]':
+                - /url: /items/cmnxqbzrq000lsd5g3gizjkmu
+                - generic [ref=e307]:
+                  - generic [ref=e308]:
+                    - generic [ref=e309]:
+                      - img [ref=e310]
+                      - generic [ref=e312]: Git Operations
+                    - img [ref=e313]
+                  - generic [ref=e316]: "# Undo last commit (keep changes staged) git reset --soft HEAD~1 # Interactive rebase last N commits git rebase -i HEAD~5"
+                  - generic [ref=e318]: 51d ago
+          - generic [ref=e319]:
+            - generic [ref=e320]:
+              - heading "Recent Items" [level=2] [ref=e321]
+              - link "View All" [ref=e322] [cursor=pointer]:
+                - /url: /items
+                - text: View All
+                - img [ref=e323]
+            - generic [ref=e325]:
+              - 'link "Custom Hooks import { useState, useEffect, useCallback } from \"react\" export function useDebounce<T>(value: T, delay: number): T { const [debounced, setDebounced] = useState(value) useEffect(() => { 51d ago" [ref=e326] [cursor=pointer]':
+                - /url: /items/cmnxqbzlj0008sd5gpob9pejo
+                - generic [ref=e328]:
+                  - generic [ref=e329]:
+                    - generic [ref=e330]:
+                      - img [ref=e331]
+                      - generic [ref=e334]: Custom Hooks
+                    - img [ref=e335]
+                  - generic [ref=e338]: "import { useState, useEffect, useCallback } from \"react\" export function useDebounce<T>(value: T, delay: number): T { const [debounced, setDebounced] = useState(value) useEffect(() => {"
+                  - generic [ref=e340]: 51d ago
+              - 'link "Component Patterns import { createContext, useContext, useState } from \"react\" // Context provider pattern const ThemeContext = createContext<{ theme: string; toggle: () => void } | null>(null) 51d ago" [ref=e341] [cursor=pointer]':
+                - /url: /items/cmnxqbzlj0009sd5gwwqr6v3f
+                - generic [ref=e343]:
+                  - generic [ref=e344]:
+                    - generic [ref=e345]:
+                      - img [ref=e346]
+                      - generic [ref=e349]: Component Patterns
+                    - img [ref=e350]
+                  - generic [ref=e353]: "import { createContext, useContext, useState } from \"react\" // Context provider pattern const ThemeContext = createContext<{ theme: string; toggle: () => void } | null>(null)"
+                  - generic [ref=e355]: 51d ago
+              - 'link "Utility Functions export function cn(...classes: (string | undefined | null | false)[]) { return classes.filter(Boolean).join(\" \") } export function formatDate(date: Date | string, locale = \"en-GB\") { 51d ago" [ref=e356] [cursor=pointer]':
+                - /url: /items/cmnxqbzlj000asd5gpy3tysjn
+                - generic [ref=e358]:
+                  - generic [ref=e359]:
+                    - generic [ref=e360]:
+                      - img [ref=e361]
+                      - generic [ref=e364]: Utility Functions
+                    - img [ref=e365]
+                  - generic [ref=e368]: "export function cn(...classes: (string | undefined | null | false)[]) { return classes.filter(Boolean).join(\" \") } export function formatDate(date: Date | string, locale = \"en-GB\") {"
+                  - generic [ref=e370]: 51d ago
+              - 'link "Code Review Prompt Review the following code and provide feedback on: 1. Correctness — are there any bugs or edge cases? 2. Readability — is the code clear and well-structured? 3. Performance — are there any obvious inefficiencies? 4. Security — are there any vulnerabilities? 51d ago" [ref=e371] [cursor=pointer]':
+                - /url: /items/cmnxqbznw000csd5gm27wlow2
+                - generic [ref=e373]:
+                  - generic [ref=e374]:
+                    - generic [ref=e375]:
+                      - img [ref=e376]
+                      - generic [ref=e379]: Code Review Prompt
+                    - img [ref=e380]
+                  - generic [ref=e383]: "Review the following code and provide feedback on: 1. Correctness — are there any bugs or edge cases? 2. Readability — is the code clear and well-structured? 3. Performance — are there any obvious inefficiencies? 4. Security — are there any vulnerabilities?"
+                  - generic [ref=e385]: 51d ago
+              - 'link "Documentation Generation Generate concise documentation for the following code. Include: - A one-line summary - Parameters/props with types and descriptions - Return value (if applicable) - A short usage example 51d ago" [ref=e386] [cursor=pointer]':
+                - /url: /items/cmnxqbznw000dsd5g2x0uzfnj
+                - generic [ref=e388]:
+                  - generic [ref=e389]:
+                    - generic [ref=e390]:
+                      - img [ref=e391]
+                      - generic [ref=e394]: Documentation Generation
+                    - img [ref=e395]
+                  - generic [ref=e398]: "Generate concise documentation for the following code. Include: - A one-line summary - Parameters/props with types and descriptions - Return value (if applicable) - A short usage example"
+                  - generic [ref=e400]: 51d ago
+              - 'link "Refactoring Assistance Refactor the following code to improve quality. Goals: - Reduce complexity and nesting - Improve naming clarity - Extract reusable logic where appropriate - Maintain identical behaviour 51d ago" [ref=e401] [cursor=pointer]':
+                - /url: /items/cmnxqbznw000esd5gv3mh1swk
+                - generic [ref=e403]:
+                  - generic [ref=e404]:
+                    - generic [ref=e405]:
+                      - img [ref=e406]
+                      - generic [ref=e409]: Refactoring Assistance
+                    - img [ref=e410]
+                  - generic [ref=e413]: "Refactor the following code to improve quality. Goals: - Reduce complexity and nesting - Improve naming clarity - Extract reusable logic where appropriate - Maintain identical behaviour"
+                  - generic [ref=e415]: 51d ago
+              - 'link "Docker + CI/CD Config # Dockerfile FROM node:20-alpine AS base WORKDIR /app FROM base AS deps 51d ago" [ref=e416] [cursor=pointer]':
+                - /url: /items/cmnxqbzpu000gsd5gz7fg866d
+                - generic [ref=e418]:
+                  - generic [ref=e419]:
+                    - generic [ref=e420]:
+                      - img [ref=e421]
+                      - generic [ref=e424]: Docker + CI/CD Config
+                    - img [ref=e425]
+                  - generic [ref=e428]: "# Dockerfile FROM node:20-alpine AS base WORKDIR /app FROM base AS deps"
+                  - generic [ref=e430]: 51d ago
+              - 'link "Deploy Script #!/bin/bash set -e echo \"Pulling latest...\" git pull origin main echo \"Installing deps...\" 51d ago" [ref=e431] [cursor=pointer]':
+                - /url: /items/cmnxqbzpu000hsd5g2e4lxqg1
+                - generic [ref=e433]:
+                  - generic [ref=e434]:
+                    - generic [ref=e435]:
+                      - img [ref=e436]
+                      - generic [ref=e438]: Deploy Script
+                    - img [ref=e439]
+                  - generic [ref=e442]: "#!/bin/bash set -e echo \"Pulling latest...\" git pull origin main echo \"Installing deps...\""
+                  - generic [ref=e444]: 51d ago
+              - link "Docker Documentation Official Docker reference documentation https://docs.docker.com/reference/ 51d ago" [ref=e445] [cursor=pointer]:
+                - /url: /items/cmnxqbzpu000isd5gv46awax8
+                - generic [ref=e447]:
+                  - generic [ref=e448]:
+                    - generic [ref=e449]:
+                      - img [ref=e450]
+                      - generic [ref=e453]: Docker Documentation
+                    - img [ref=e454]
+                  - paragraph [ref=e456]: Official Docker reference documentation
+                  - paragraph [ref=e457]: https://docs.docker.com/reference/
+                  - generic [ref=e459]: 51d ago
+              - link "GitHub Actions Docs GitHub Actions official documentation https://docs.github.com/en/actions 51d ago" [ref=e460] [cursor=pointer]:
+                - /url: /items/cmnxqbzpu000jsd5grd7zr6y3
+                - generic [ref=e462]:
+                  - generic [ref=e463]:
+                    - generic [ref=e464]:
+                      - img [ref=e465]
+                      - generic [ref=e468]: GitHub Actions Docs
+                    - img [ref=e469]
+                  - paragraph [ref=e471]: GitHub Actions official documentation
+                  - paragraph [ref=e472]: https://docs.github.com/en/actions
+                  - generic [ref=e474]: 51d ago

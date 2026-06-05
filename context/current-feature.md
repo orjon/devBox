@@ -1,16 +1,29 @@
-# Current Feature
+# Current Feature: Profile Page
 
 ## Status
 
-Not Started
+In Progress
 
 ## Goals
 
-<!-- Add goals here -->
+- `/profile` route exists and is protected (requires auth)
+- Displays user info: name, email, avatar (OAuth image or initials fallback), account creation date, last logged in date
+- Shows usage stats: total items, total collections, breakdown by item type
+- Change password action appears only for email/password users (not OAuth)
+- Delete account action with confirmation dialog
 
 ## Notes
 
-<!-- Add notes here -->
+- Avatar: use OAuth image if available, otherwise initials from name/email (matches existing UserAvatar component)
+- Change password: only for users who have a password field set (email signup); GitHub/Google OAuth users skip this
+- Delete account: requires confirmation dialog to prevent accidental deletion
+- Item type breakdown: counts per type (snippets, prompts, notes, commands, links, files, images)
+- Follow existing data fetching patterns (server component + db query functions)
+- Last login date dropped — schema has no lastLoginAt field
+- Sidebar is the app shell, not dashboard-specific — refactor into an (app) route group:
+  - New `src/app/(app)/layout.tsx` holds the shell (sidebar, auth, data fetching)
+  - `src/app/(app)/dashboard/` and `src/app/(app)/profile/` both live under it
+  - Middleware matcher updated to cover `/(app)` routes (dashboard + profile)
 
 ## History
 
