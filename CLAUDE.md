@@ -16,10 +16,10 @@ Read the following for project context:
 ## Commands
 
 ```bash
-npm run dev      # start dev server
-npm run build    # production build
-npm run start    # start production server
-npm run lint     # run ESLint
+pnpm dev         # start dev server
+pnpm build       # production build
+pnpm start       # start production server
+pnpm lint        # run ESLint
 ```
 
 ## Database

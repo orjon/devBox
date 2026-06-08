@@ -21,7 +21,7 @@ jobs:
             cd /var/www/devbox
             git pull origin main
             set -a; source .env.production.local; set +a
-            npm ci
+            pnpm install --frozen-lockfile
             npx prisma migrate deploy
-            npm run build
-            PORT=3003 pm2 restart devbox 2>/dev/null || PORT=3003 pm2 start npm --name devbox -- start
+            pnpm build
+            PORT=3003 pm2 restart devbox 2>/dev/null || PORT=3003 pm2 start pnpm --name devbox -- start

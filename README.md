@@ -41,8 +41,8 @@ DevBox is a toolbox for developers to store and quickly access the resources the
 Install dependencies and start the development server:
 
 ```bash
-npm install
-npm run dev
+pnpm install
+pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) in your browser.
@@ -52,18 +52,18 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 ## Commands
 
 ```bash
-npm run dev        # Start development server
-npm run build      # Production build
-npm run start      # Start production server
-npm run lint       # Run ESLint
+pnpm dev           # Start development server
+pnpm build         # Production build
+pnpm start         # Start production server
+pnpm lint          # Run ESLint
 ```
 
 ### Database
 
 ```bash
-npm run db:seed    # Seed the database with sample data
-npm run db:studio  # Open Prisma Studio (database GUI)
-npm run db:test    # Run database connection test
+pnpm db:seed       # Seed the database with sample data
+pnpm db:studio     # Open Prisma Studio (database GUI)
+pnpm db:test       # Run database connection test
 ```
 
 > Database changes must go through Prisma migrations. Never run `prisma db push` or modify the schema directly.
